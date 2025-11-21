@@ -17,7 +17,6 @@ const Header = () => {
 
   const isHome = pathname === "/";
 
-  // Auto-close side menu on desktop resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) setIsSidebarOpen(false);
@@ -26,7 +25,6 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Detect scroll for blur background
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
@@ -38,74 +36,75 @@ const Header = () => {
 
   return (
     <>
-     <header
-  className={`
-    w-full z-40 transition-all duration-300
-    ${isHome ? "fixed top-0" : "relative"}
-    ${isHome
-      ? scrolled
-        ? "backdrop-blur-md bg-blue/40 shadow-md"
-        : "bg-transparent"
-      : "shadow-md"
-    }
-  `}
->
-  {/* Background Image + Overlay for non-home pages */}
-  {!isHome && (
-    <div className="absolute inset-0 z-0">
-      <Image
-        src="/footer1.png"
-        alt="Header Background"
-        fill
-        className="object-cover object-[20%_12%] opacity-25"
-        priority
-      />
-      <div className="absolute inset-0 bg-blue/90 mix-blend-overlay" />
-    </div>
-  )}
-
-  {/* White Divider Line */}
-  <div className="w-full h-px bg-white/40 absolute bottom-0 z-50"></div>
-
-  <Container
-    fullWidth
-    className="flex items-center justify-between py-4 md:py-6 lg:px-16 relative z-10"
-  >
-    {/* Left: Logo */}
-    <div className="flex items-center justify-center w-1/3 shrink-0">
-      <div className="md:scale-130 scale-145  items-center" >
-        <Logo />
-      </div>
-    </div>
-
-    {/* Center: Hamburger + Desktop Menu */}
-    <div className="flex justify-center w-1/3 relative">
-      {/* Mobile Hamburger */}
-      <div
-        className="md:hidden cursor-pointer text-white hover:text-shop-orange transition-colors"
-        onClick={openSidebar}
+      <header
+        className={`
+          w-full z-40 transition-all duration-300
+          ${isHome ? "fixed top-0" : "relative"}
+          ${
+            isHome
+              ? scrolled
+                ? "backdrop-blur-md bg-blue/40 shadow-md"
+                : "bg-transparent"
+              : "shadow-md"
+          }
+        `}
       >
-        <AlignLeft className="w-6 h-6" />
-      </div>
+        {!isHome && (
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/footer1.png"
+              alt="Header Background"
+              fill
+              className="object-cover object-[20%_12%] opacity-25"
+              priority
+            />
+            <div className="absolute inset-0 bg-blue/90 mix-blend-overlay" />
+          </div>
+        )}
 
-      {/* Desktop Menu */}
-      <div className="hidden md:flex justify-center w-full max-w-[500px]">
-        <HeaderMenu />
-      </div>
-    </div>
+        <div className="w-full h-px bg-white/40 absolute bottom-0 z-50"></div>
 
-    {/* Right: Contact Button */}
-    <div className="flex items-center justify-end w-1/3 shrink-0">
-      <div className="md:hidden scale-[1] ml-4">
-        <Contactbutton />
-      </div>
-      <div className="hidden md:block">
-        <Contactbutton />
-      </div>
-    </div>
-  </Container>
-</header>
+        <Container
+          fullWidth
+          className="flex items-center justify-between py-4 md:py-6 lg:px-16 relative z-10"
+        >
+          {/* Logo Left */}
+          <div className="flex items-center justify-start w-1/3 shrink-0">
+            <div className="scale-[1.15] md:scale-125 max-w-[130px] sm:max-w-[150px]">
+              <Logo />
+            </div>
+          </div>
 
+          {/* Center Menu/Hamburger */}
+          <div className="flex justify-center w-1/3 relative">
+            {/* Mobile Hamburger */}
+            <div
+              className="md:hidden cursor-pointer text-white hover:text-shop-orange transition-colors"
+              onClick={openSidebar}
+            >
+              <AlignLeft className="w-6 h-6" />
+            </div>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex justify-center w-full max-w-[500px]">
+              <HeaderMenu />
+            </div>
+          </div>
+
+          {/* Contact Button Right */}
+          <div className="flex items-center justify-end w-1/3 shrink-0">
+            {/* Mobile button — smaller, no wrapping */}
+            <div className="md:hidden ml-3 whitespace-nowrap">
+              <Contactbutton  />
+            </div>
+
+            {/* Desktop button */}
+            <div className="hidden md:block">
+              <Contactbutton />
+            </div>
+          </div>
+        </Container>
+      </header>
 
       {/* Side Menu */}
       <SideMenu isOpen={isSidebarOpen} onClose={closeSidebar} />
