@@ -1,11 +1,30 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 
 const HomeHero = () => {
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const headerRef = useRef<HTMLDivElement | null>(null);
+
+  // Measure the header height dynamically
+  useEffect(() => {
+    const headerEl = document.getElementById("site-header");
+    if (headerEl) setHeaderHeight(headerEl.offsetHeight);
+
+    const handleResize = () => {
+      if (headerEl) setHeaderHeight(headerEl.offsetHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <section className="relative w-full h-[85vh] overflow-hidden">
+    <section
+      className="relative w-full h-[85vh] overflow-hidden"
+      style={{ paddingTop: `${headerHeight}px` }} // offset so header doesn't overlap
+    >
       {/* Video background */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
@@ -16,7 +35,7 @@ const HomeHero = () => {
         playsInline
       />
 
-      {/* Optional overlay to make text pop */}
+      {/* Optional overlay */}
       <div className="absolute inset-0 bg-black/35" />
 
       {/* Hero content */}
