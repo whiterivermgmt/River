@@ -13,7 +13,15 @@ const clientData = [
     description:
       "We designed a full 12-page responsive website for Gerkin Construction, integrating a working Visualizer API, Quick Estimate form, and contact forms that send requests directly to their team. Gerkin is a fantastic client — clear with their vision, very responsive, and a pleasure to collaborate with.",
   },
-  // Add more clients if needed
+  {
+    name: "Escos Green",
+    url: "escos.vercel.app",
+    logo: "/clients/escos/catlogo.png",
+    screenshot: "/clients/escos/escoshomepage.png",
+    description:
+       "We built a modern, responsive website for Escos with a strong focus on clarity, speed, and conversion. The site highlights their services clearly, improves lead flow through streamlined contact forms, and presents a professional, trustworthy brand presence across all devices.",
+  },
+
 ];
 
 const Clients = () => {
