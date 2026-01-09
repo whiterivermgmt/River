@@ -24,8 +24,8 @@ const clientData = [
   {
   name: "Jarrett Owens Shop",
   url: "jarrettowensshop.shopify.com",
-  logo: "/clients/escos/adven.png",
-  screenshot: "/clients/escos/website.png",
+  logo: "/clients/adventure/adven.png",
+  screenshot: "/clients/adventure/website.png",
   description:
     "We built a high-converting Shopify storefront for Jarrett Owens Shop designed to turn visitors into buyers. The site is optimized for speed, mobile usability, and clear product positioning, with a strong emphasis on persuasive layouts, simplified navigation, and frictionless checkout. Every element is structured to highlight product value, reduce drop-off, and drive consistent digital sales for a creator-led brand."
 }
