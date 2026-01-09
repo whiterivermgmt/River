@@ -15,7 +15,7 @@ const clientData = [
   },
   {
     name: "Escos Green",
-    url: "escos.vercel.app",
+    url: "https://escos.vercel.app",
     logo: "/clients/escos/catlogo.png",
     screenshot: "/clients/escos/escoshomepage.png",
     description:
@@ -23,7 +23,7 @@ const clientData = [
   },
   {
   name: "Jarrett Owens Shop",
-  url: "jarrettowensshop.shopify.com",
+  url: "https://jarrettowensshop.shopify.com",
   logo: "/clients/adventure/adven.png",
   screenshot: "/clients/adventure/website.png",
   description:
